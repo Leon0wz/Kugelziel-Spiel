@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #01061a; /* Hintergrundfarbe des Spiels */
+    cursor: crosshair;
+}
+
+#spiel-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ziel {
+    width: 50px; /*Gibt die größe an*/
+    height: 50px;
+    background-color: #ff5733; /* Rote Farbe für das Ziel */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+#kugel {
+    width: 20px; /*Gibt die größe an*/
+    height: 20px;
+    background-color: #3498db; /* Blaue Farbe für die Kugel */
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer; /* Ändert den Cursor, um anzuzeigen, dass das Ziel geklickt werden kann */
+}
+
+#neustarten {
+    display: none;
+    height: 150px;
+    border-radius: 80px;
+    width: 400px;
+    font-size: xxx-large;
+    border: none;
+    background-color: white;
+}
+
+#neustarten:hover {
+    box-shadow: white 5px 5px 5px 5px;
+    cursor: pointer;
+}
