@@ -2,22 +2,53 @@
 const ziel = document.getElementById('ziel');
 const kugel = document.getElementById('kugel');
 const button = document.getElementById('neustarten');
+const MOVEMENT_SPEED = 240; // Anzahl der Frames für die Animation, erhöhen oder verringern um die Geschwindigkeit anzupassen
+
 
 // Funktion, um die Position eines Elements zufällig innerhalb des sichtbaren Bereichs zu setzen
-function setRandomPosition(element) {
+function setRandomPosition(element, speed = 0) {
     const maxX = window.innerWidth - element.clientWidth;
     const maxY = window.innerHeight - element.clientHeight;
 
     const randomX = Math.random() * maxX;
     const randomY = Math.random() * maxY;
 
-    element.style.left = randomX + 'px';
-    element.style.top = randomY + 'px';
+    if (speed) {
+        const currentX = parseFloat(element.style.left || 0);
+        const currentY = parseFloat(element.style.top || 0);
+        const deltaX = (randomX - currentX) / speed;
+        const deltaY = (randomY - currentY) / speed;
+
+        let frame = 0;
+        const animate = () => {
+            if (frame < speed) {
+                element.style.left = (currentX + deltaX * frame) + 'px';
+                element.style.top = (currentY + deltaY * frame) + 'px';
+                frame++;
+                requestAnimationFrame(animate);
+            }
+        };
+        requestAnimationFrame(animate);
+    } else {
+        element.style.left = randomX + 'px';
+        element.style.top = randomY + 'px';
+    }
+}
+
+function getRandomInterval(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function moveTargetRandomly(target) {
+    setRandomPosition(target, MOVEMENT_SPEED);
+
+    const randomInterval = getRandomInterval(300, 1000);
+    setTimeout(() => moveTargetRandomly(target), randomInterval);
 }
 
 // Zufällige Positionen für das Ziel und die Kugel festlegen
-setRandomPosition(ziel);
 setRandomPosition(kugel);
+moveTargetRandomly(ziel);
 
 // Event-Listener für die Kugel, um auf Mausklicks und -bewegungen zu reagieren
 kugel.addEventListener('mousedown', () => {
