@@ -1,7 +1,7 @@
 body {
     margin: 0;
     overflow: hidden;
-    background-color: #01061a; /* Hintergrundfarbe des Spiels */
+    background-image: url(space.png); /* Hintergrundfarbe des Spiels */
     cursor: crosshair;
 }
 
@@ -15,9 +15,9 @@ body {
 }
 
 #ziel {
-    width: 50px; /*Gibt die größe an*/
-    height: 50px;
-    background-color: #ff5733; /* Rote Farbe für das Ziel */
+    width: 60px; /*Gibt die größe an*/
+   height: 60px;
+         /* Rote Farbe für das Ziel */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -26,12 +26,13 @@ body {
 }
 
 #kugel {
-    width: 20px; /*Gibt die größe an*/
-    height: 20px;
-    background-color: #3498db; /* Blaue Farbe für die Kugel */
+    width: 30px; /*Gibt die größe an*/
+    height: 30px;
+     /* Blaue Farbe für die Kugel */
     position: absolute;
     border-radius: 50%;
     cursor: pointer; /* Ändert den Cursor, um anzuzeigen, dass das Ziel geklickt werden kann */
+    cursor: grab;
 }
 
 #neustarten {
@@ -40,11 +41,27 @@ body {
     border-radius: 80px;
     width: 400px;
     font-size: xxx-large;
-    border: none;
-    background-color: white;
+    border-color: rgba(255, 255, 0, 0.533);
+    background-color: rgba(0, 0, 0, 0.523);
+    border-width: 10px;
+    color: rgba(255, 255, 0, 0.533);
+    font-family: verdana, sans-serif;
 }
 
 #neustarten:hover {
-    box-shadow: white 5px 5px 5px 5px;
+    box-shadow: rgba(255, 255, 255, 0.496) 5px 5px 5px 5px;
     cursor: pointer;
+    border-color: yellow;
+    color: yellow;
+}
+
+
+#earth {
+    width: 60px;
+    height: 60px;
+}
+
+#asteroid {
+    width: 30px;
+    height: 30px;
 }
